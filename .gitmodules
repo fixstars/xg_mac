@@ -1,0 +1,7 @@
+[submodule "toe"]
+	path = toe
+	url = https://github.com/hpcn-uam/100G-fpga-network-stack-core
+[submodule "vivado/XilinxBoardStore"]
+	path = vivado/XilinxBoardStore
+	url = https://github.com/Xilinx/XilinxBoardStore
+	branch = 2019.2.1

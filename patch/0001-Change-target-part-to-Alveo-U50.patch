@@ -1,0 +1,144 @@
+From 47630b8a87be6906e74e1ddbea85d02871a1dd50 Mon Sep 17 00:00:00 2001
+From: Kenta IDA <kenta.ida@fixstars.com>
+Date: Fri, 8 May 2020 04:01:49 +0900
+Subject: [PATCH] Change target part to Alveo U50
+
+---
+ scripts/arp_script.tcl               | 4 ++--
+ scripts/echo_server_script.tcl       | 2 +-
+ scripts/ethernet_inserter_script.tcl | 2 +-
+ scripts/icmp_script.tcl              | 2 +-
+ scripts/iperf2_tcp_script.tcl        | 2 +-
+ scripts/packet_handler_script.tcl    | 2 +-
+ scripts/portHandler.tcl              | 2 +-
+ scripts/toe_script.tcl               | 2 +-
+ scripts/userAbstraction.tcl          | 2 +-
+ 9 files changed, 10 insertions(+), 10 deletions(-)
+
+diff --git a/scripts/arp_script.tcl b/scripts/arp_script.tcl
+index 8a7d4ef..46fc869 100644
+--- a/scripts/arp_script.tcl
++++ b/scripts/arp_script.tcl
+@@ -9,7 +9,7 @@ set_top arp_server
+ add_files ${root_folder}/hls/arp_server/arp_server.cpp
+ 
+ open_solution "ultrascale_plus"
+-set_part {xcvu9p-flga2104-2l-e} -tool vivado
++set_part {xcvu35p-fsvh2104-2-e} -tool vivado
+ create_clock -period 3.1 -name default
+ set_clock_uncertainty 0.2
+ 
+@@ -17,4 +17,4 @@ config_rtl -disable_start_propagation
+ csynth_design
+ export_design -rtl verilog -format ip_catalog
+ 
+-exit
+\ No newline at end of file
++exit
+diff --git a/scripts/echo_server_script.tcl b/scripts/echo_server_script.tcl
+index f957495..c41dccd 100644
+--- a/scripts/echo_server_script.tcl
++++ b/scripts/echo_server_script.tcl
+@@ -11,7 +11,7 @@ add_files ${root_folder}/hls/echo_replay/echo_server_application.cpp
+ add_files -tb ${root_folder}/hls/echo_replay/test_echo_server_application.cpp
+ 
+ open_solution "ultrascale_plus"
+-set_part {xcvu9p-flga2104-2l-e} -tool vivado
++set_part {xcvu35p-fsvh2104-2-e} -tool vivado
+ create_clock -period 3.1 -name default
+ set_clock_uncertainty 0.2
+ 
+diff --git a/scripts/ethernet_inserter_script.tcl b/scripts/ethernet_inserter_script.tcl
+index 707a361..54fbb43 100644
+--- a/scripts/ethernet_inserter_script.tcl
++++ b/scripts/ethernet_inserter_script.tcl
+@@ -11,7 +11,7 @@ add_files ${root_folder}/hls/ethernet_inserter/ethernet_header_inserter.cpp
+ add_files -tb ${root_folder}/hls/ethernet_inserter/ethernet_header_inserter_test.cpp
+ 
+ open_solution "ultrascale_plus"
+-set_part {xcvu9p-flga2104-2l-e} -tool vivado
++set_part {xcvu35p-fsvh2104-2-e} -tool vivado
+ create_clock -period 3.1 -name default
+ set_clock_uncertainty 0.2
+ 
+diff --git a/scripts/icmp_script.tcl b/scripts/icmp_script.tcl
+index d4f0945..1f62f88 100644
+--- a/scripts/icmp_script.tcl
++++ b/scripts/icmp_script.tcl
+@@ -14,7 +14,7 @@ add_files -tb ${root_folder}/hls/TOE/testbench/pcap2stream.cpp -cflags "-Ihls/TO
+ add_files -tb ${root_folder}/hls/TOE/testbench/pcap.cpp -cflags "-Ihls/TOE/testbench/."
+ 
+ open_solution "ultrascale_plus"
+-set_part {xcvu9p-flga2104-2l-e} -tool vivado
++set_part {xcvu35p-fsvh2104-2-e} -tool vivado
+ create_clock -period 3.1 -name default
+ set_clock_uncertainty 0.2
+ #csim_design -argv "${root_folder}/hls/icmp_server/icmp.pcap ${root_dir}/hls/icmp_server/icmp_golden.pcap"
+diff --git a/scripts/iperf2_tcp_script.tcl b/scripts/iperf2_tcp_script.tcl
+index 8811331..af1c00c 100644
+--- a/scripts/iperf2_tcp_script.tcl
++++ b/scripts/iperf2_tcp_script.tcl
+@@ -14,7 +14,7 @@ add_files ${root_folder}/hls/TOE/common_utilities/common_utilities.cpp
+ add_files -tb ${root_folder}/hls/iperf2_tcp/test_iperf_client.cpp
+ 
+ open_solution "ultrascale_plus"
+-set_part {xcvu9p-flga2104-2l-e} -tool vivado
++set_part {xcvu35p-fsvh2104-2-e} -tool vivado
+ create_clock -period 3.1 -name default
+ set_clock_uncertainty 0.2
+ 
+diff --git a/scripts/packet_handler_script.tcl b/scripts/packet_handler_script.tcl
+index 6d2bf16..c3e4a2d 100644
+--- a/scripts/packet_handler_script.tcl
++++ b/scripts/packet_handler_script.tcl
+@@ -11,7 +11,7 @@ add_files ${root_folder}/hls/packet_handler/packet_handler.cpp
+ add_files -tb ${root_folder}/hls/packet_handler/test_packet_hanlder.cpp
+ 
+ open_solution "ultrascale_plus"
+-set_part {xcvu9p-flga2104-2l-e} -tool vivado
++set_part {xcvu35p-fsvh2104-2-e} -tool vivado
+ create_clock -period 3.1 -name default
+ set_clock_uncertainty 0.2
+ 
+diff --git a/scripts/portHandler.tcl b/scripts/portHandler.tcl
+index 7280bff..1973c02 100644
+--- a/scripts/portHandler.tcl
++++ b/scripts/portHandler.tcl
+@@ -15,7 +15,7 @@ add_files -tb ${root_folder}/hls/TOE/testbench/pcap.cpp -cflags ""
+ add_files -tb ${root_folder}/hls/TOE/testbench/pcap2stream.cpp -cflags ""
+ 
+ open_solution "ultrascale_plus"
+-set_part {xcvu9p-flga2104-2l-e} -tool vivado
++set_part {xcvu35p-fsvh2104-2-e} -tool vivado
+ create_clock -period 3.1 -name default
+ set_clock_uncertainty 0.2
+ 
+diff --git a/scripts/toe_script.tcl b/scripts/toe_script.tcl
+index 075ac74..eec05fb 100644
+--- a/scripts/toe_script.tcl
++++ b/scripts/toe_script.tcl
+@@ -36,7 +36,7 @@ add_files -tb ${root_folder}/hls/TOE/testbench/pcap2stream.cpp
+ add_files -tb ${root_folder}/hls/TOE/testbench/test_toe.cpp
+ 
+ open_solution "ultrascale_plus"
+-set_part {xcvu9p-flga2104-2l-e} -tool vivado
++set_part {xcvu35p-fsvh2104-2-e} -tool vivado
+ create_clock -period 2.5 -name default
+ set_clock_uncertainty 0.2
+ 
+diff --git a/scripts/userAbstraction.tcl b/scripts/userAbstraction.tcl
+index 89ec3ab..5497b24 100644
+--- a/scripts/userAbstraction.tcl
++++ b/scripts/userAbstraction.tcl
+@@ -12,7 +12,7 @@ add_files ${root_folder}/hls/TOE/common_utilities/common_utilities.cpp
+ add_files -tb ${root_folder}/hls/user_abstraction/user_abstraction_tb.cpp -cflags ""
+ 
+ open_solution "ultrascale_plus"
+-set_part {xcvu9p-flga2104-2l-e} -tool vivado
++set_part {xcvu35p-fsvh2104-2-e} -tool vivado
+ create_clock -period 3.1 -name default
+ set_clock_uncertainty 0.2
+ 
+-- 
+2.7.4
+
